@@ -251,7 +251,7 @@
             "pages": [
               "docs/sglang-diffusion/performance-optimization",
               "docs/sglang-diffusion/attention-backends",
-              "docs/sglang-diffusion/performance/profiling",
+              "docs/sglang-diffusion/profiling",
               "docs/sglang-diffusion/ci-performance"
             ]
           },
