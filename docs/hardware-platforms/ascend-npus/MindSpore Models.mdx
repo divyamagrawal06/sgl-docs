@@ -17,13 +17,17 @@ Currently, the following models are supported:
 
 ## Installation
 
-> **Note**: Currently, MindSpore models are provided by an independent package `sgl-mindspore`. Support for MindSpore is built upon current SGLang support for Ascend NPU platform. Please first [install SGLang for Ascend NPU](ascend_npu.md) and then install `sgl-mindspore`:
+<Note>
+Currently, MindSpore models are provided by an independent package `sgl-mindspore`. Support for MindSpore is built upon current SGLang support for Ascend NPU platform. Please first [install SGLang for Ascend NPU](https://github.com/sgl-project/sglang/blob/main/docs/hardware-platforms/ascend-npus/SGLang%20installation%20with%20NPUs%20support.md) and then install `sgl-mindspore`:
+</Note>
 
-```shell
+<CodeGroup>
+```shell Install
 git clone https://github.com/mindspore-lab/sgl-mindspore.git
 cd sgl-mindspore
 pip install -e .
 ```
+</CodeGroup>
 
 
 ## Run Model
@@ -34,7 +38,8 @@ Current SGLang-MindSpore supports Qwen3 and DeepSeek V3/R1 models. This doc uses
 
 Use the following script for offline infer:
 
-```python
+<CodeGroup>
+```python Offline Inference
 import sglang as sgl
 
 # Initialize the engine with MindSpore backend
@@ -62,12 +67,14 @@ for prompt, output in zip(prompts, outputs):
     print(f"Generated: {output['text']}")
     print("---")
 ```
+</CodeGroup>
 
 ### Start server
 
 Launch a server with MindSpore backend:
 
-```bash
+<CodeGroup>
+```bash Launch Server
 # Basic server startup
 python3 -m sglang.launch_server \
     --model-path /path/to/your/model \
@@ -78,10 +85,12 @@ python3 -m sglang.launch_server \
     --tp-size 1 \
     --dp-size 1
 ```
+</CodeGroup>
 
 For distributed server with multiple nodes:
 
-```bash
+<CodeGroup>
+```bash Multi-node Distributed
 # Multi-node distributed server
 python3 -m sglang.launch_server \
     --model-path /path/to/your/model \
@@ -95,6 +104,7 @@ python3 -m sglang.launch_server \
     --tp-size 4 \
     --dp-size 2
 ```
+</CodeGroup>
 
 ## Troubleshooting
 
@@ -102,7 +112,8 @@ python3 -m sglang.launch_server \
 
 Enable sglang debug logging by log-level argument.
 
-```bash
+<CodeGroup>
+```bash Debug Mode
 python3 -m sglang.launch_server \
     --model-path /path/to/your/model \
     --host 0.0.0.0 \
@@ -111,37 +122,46 @@ python3 -m sglang.launch_server \
     --attention-backend ascend \
     --log-level DEBUG
 ```
+</CodeGroup>
 
 Enable mindspore info and debug logging by setting environments.
 
-```bash
+<CodeGroup>
+```bash Set Log Level
 export GLOG_v=1  # INFO
 export GLOG_v=0  # DEBUG
 ```
+</CodeGroup>
 
 #### Explicitly select devices
 
 Use the following environment variable to explicitly select the devices to use.
 
-```shell
+<CodeGroup>
+```shell Select Devices
 export ASCEND_RT_VISIBLE_DEVICES=4,5,6,7  # to set device
 ```
+</CodeGroup>
 
 #### Some communication environment issues
 
 In case of some environment with special communication environment, users need set some environment variables.
 
-```shell
+<CodeGroup>
+```shell Disable LCCL
 export MS_ENABLE_LCCL=off # current not support LCCL communication mode in SGLang-MindSpore
 ```
+</CodeGroup>
 
 #### Some dependencies of protobuf
 
 In case of some environment with special protobuf version, users need set some environment variables to avoid binary version mismatch.
 
-```shell
+<CodeGroup>
+```shell Fix Protobuf
 export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python  # to avoid protobuf binary version mismatch
 ```
+</CodeGroup>
 
 ## Support
 For MindSpore-specific issues:

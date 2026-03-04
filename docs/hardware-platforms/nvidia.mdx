@@ -11,27 +11,29 @@ Before starting, ensure the following:
 - CUDA Toolkit and cuDNN are installed.
 - Verify that the Jetson AGX Orin is in high-performance mode:
 
-```bash
+<CodeGroup>
+```bash Command
 sudo nvpmodel -m 0
 ```
+</CodeGroup>
 
 ## Installing and Running SGLang with Jetson Containers
 
 <Steps>
   <Step title="Clone the jetson-containers repository">
-    ```bash
+    ```bash Command
     git clone https://github.com/dusty-nv/jetson-containers.git
     ```
   </Step>
 
   <Step title="Run the installation script">
-    ```bash
+    ```bash Command
     bash jetson-containers/install.sh
     ```
   </Step>
 
   <Step title="Build the container image">
-    ```bash
+    ```bash Command
     jetson-containers build sglang
     ```
   </Step>
@@ -39,12 +41,12 @@ sudo nvpmodel -m 0
   <Step title="Run the container">
     <Tabs>
       <Tab title="Using jetson-containers">
-        ```bash
+        ```bash Command
         jetson-containers run $(autotag sglang)
         ```
       </Tab>
       <Tab title="Using Docker manually">
-        ```bash
+        ```bash Command
         docker run --runtime nvidia -it --rm --network=host IMAGE_NAME
         ```
       </Tab>
@@ -56,7 +58,8 @@ sudo nvpmodel -m 0
 
 Launch the server:
 
-```bash
+<CodeGroup>
+```bash Command
 python -m sglang.launch_server \
   --model-path deepseek-ai/DeepSeek-R1-Distill-Llama-8B \
   --device cuda \
@@ -65,6 +68,7 @@ python -m sglang.launch_server \
   --mem-fraction-static 0.8 \
   --context-length 8192
 ```
+</CodeGroup>
 
 The quantization and limited context length (`--dtype half` `--context-length 8192`) are due to the limited computational resources in [Nvidia jetson kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/). A detailed explanation can be found in [Server Arguments](https://docs.sglang.io/advanced_features/server_arguments.html).
 
@@ -74,7 +78,8 @@ After launching the engine, refer to [Chat completions](https://docs.sglang.io/b
 
 TorchAO is suggested to NVIDIA Jetson Orin.
 
-```bash
+<CodeGroup>
+```bash Command
 python -m sglang.launch_server \
   --model-path meta-llama/Meta-Llama-3.1-8B-Instruct \
   --device cuda \
@@ -84,6 +89,7 @@ python -m sglang.launch_server \
   --context-length 8192 \
   --torchao-config int4wo-128
 ```
+</CodeGroup>
 
 This enables TorchAO's int4 weight-only quantization with a 128-group size. The usage of `--torchao-config int4wo-128` is also for memory efficiency.
 
