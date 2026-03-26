@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-25T12:11:27.512818Z",
+  "generatedAt": "2026-03-26T00:13:34.092041Z",
   "sourceRepo": "https://github.com/lm-sys/lm-sys.github.io/tree/main/blog",
   "keywords": [
     "sglang",
@@ -10,7 +10,7 @@
     "sglang diffusion"
   ],
   "maxCards": 6,
-  "totalBlogFilesScanned": 78,
+  "totalBlogFilesScanned": 79,
   "cardsPublished": 6,
   "posts": [
     {
@@ -18,6 +18,13 @@
       "title": "ROCm Support for Miles: Large-Scale RL Post-Training on AMD Instinct\u2122 GPUs",
       "url": "https://lmsys.org/blog/2026-03-17-rocm-miles-rl-amd/",
       "image": "https://lmsys.org/images/blog/rocm_miles_rl/fig_1.png",
+      "date": "March 17, 2026"
+    },
+    {
+      "slug": "2026-03-17-eep-partial-failure-tolerance",
+      "title": "Elastic EP in SGLang: Achieving Partial Failure Tolerance for DeepSeek MoE Deployments",
+      "url": "https://lmsys.org/blog/2026-03-17-eep-partial-failure-tolerance/",
+      "image": "https://lmsys.org/images/blog/eep-partial-failure-tolerance/figure.png",
       "date": "March 17, 2026"
     },
     {
@@ -47,13 +54,6 @@
       "url": "https://lmsys.org/blog/2026-02-16-sglang-diffusion-advanced-optimizations/",
       "image": "https://lmsys.org/images/blog/sgl-diffusion/sgl-diffusion-banner-16-9.png",
       "date": "February 16, 2026"
-    },
-    {
-      "slug": "2026-02-11-Qwen-latency",
-      "title": "Unleashing Computational Power: Ultimate Latency Optimization of Qwen3 and Qwen3-VL on AMD MI300X Series",
-      "url": "https://lmsys.org/blog/2026-02-11-Qwen-latency/",
-      "image": "https://lmsys.org/images/blog/qwen_amd_latency/preview.png",
-      "date": "February 11, 2026"
     }
   ]
 }
